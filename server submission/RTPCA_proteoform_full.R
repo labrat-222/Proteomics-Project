@@ -5,8 +5,7 @@ library(Rtpca)
 library(TPP)
 
 # 1. Import data and set dataset for analysis
-load("~/Library/CloudStorage/OneDrive-共享的库-Onedrive/Sweden/MTLS/summer intern/💻Research project/Step 2-RSS analysis/neoantigen_objects.RData")
-#load() #path of neoantigen_objects.Rdata
+load(neoantigen_objects.RData)
 
 #load peptide data
 expression_data <- as.data.frame(exprs(peptides_novel_normalized) )#contains quantitive data. relative abundance
@@ -42,7 +41,7 @@ head(trData)#eset data
 ##  TPCA for co-aggregation
 
 #load pf annotation data
-pf_anno<-read.delim('/Users/labrat/Library/CloudStorage/OneDrive-共享的库-Onedrive/Sweden/MTLS/summer intern/💻Research project/Step 2-RSS analysis/Input/ProteoformAnnotation.txt')
+pf_anno<-read.delim('ProteoformAnnotation.txt')
 head(pf_anno)
 #remove column
 pf_anno <- pf_anno %>%
@@ -61,7 +60,7 @@ vehComplexTPCA <- runTPCA(
 )
 
 #save result
-saveRDS(vehComplexTPCA,'/Users/labrat/Library/CloudStorage/OneDrive-共享的库-Onedrive/Sweden/MTLS/summer intern/💻Research project/Step 2-RSS analysis/Outputs/vehComplexTPCA.RDS')
+saveRDS(vehComplexTPCA,'vehComplexTPCA.RDS')
 
 # 3. Visualize results (PPI)
 
